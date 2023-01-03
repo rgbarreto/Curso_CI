@@ -12,7 +12,11 @@ on:
 jobs:
 
   test:
-    runs-on: ubuntu-latest
+   
+    runs-on: ${{ matrix.OS }}
+    strategy:
+      matrix:
+        OS: ['ubuntu-latest', 'windows-11']
     steps:
     - uses: actions/checkout@v3
 
@@ -32,7 +36,7 @@ jobs:
       
   build:
     needs: test
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.OS }}
     steps:
     - uses: actions/checkout@v3
       
