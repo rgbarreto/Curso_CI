@@ -44,17 +44,17 @@ jobs:
       
   build:
     needs: test
-    runs-on: ${{ matrix.OS }}
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: ['ubuntu-latest', 'ubuntu-18.04']
     steps:
     - uses: actions/checkout@v3
-      
     - name: Build
       run: go build -v main.go
-      
+
   docker:
-    needs: build 
+    needs: build
     uses: ./.github/workflows/Docker.yml
+    secrets: inherit
     
