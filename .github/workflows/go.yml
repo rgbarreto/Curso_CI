@@ -55,8 +55,7 @@ jobs:
         path: main
 
 
-  #docker:
-  #test
-   # needs: build
-   # uses: ./.github/workflows/Docker.yml
-   # secrets: inherit
+  docker:
+    needs: build
+    uses: ./.github/workflows/Docker.yml
+    secrets: inherit
